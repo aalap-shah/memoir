@@ -110,12 +110,15 @@ public class CameraFragment extends Fragment {
 			mCamera.unlock();
 			mMediaRecorder.setCamera(mCamera);
 
-			preview = new RecorderPreview(this.getActivity(), mMediaRecorder);
-			FrameLayout framelayout = (FrameLayout) getActivity().findViewById(
+			preview = new RecorderPreview(this.getActivity().getApplicationContext(), mMediaRecorder);
+			FrameLayout framelayout = (FrameLayout) rootView.findViewById(
 					R.id.camera_preview);
+			
+			Log.d("asd", "Activity is " + getView());
+			Log.d("asd", "framelayout is " + framelayout);
 			framelayout.addView(preview);
 
-			Button captureButton = (Button) getActivity().findViewById(
+			Button captureButton = (Button) rootView.findViewById(
 					R.id.button_capture);
 			captureButton.setOnClickListener(new View.OnClickListener() {
 				boolean isRecording = false;
